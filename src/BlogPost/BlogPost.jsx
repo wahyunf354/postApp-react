@@ -10,17 +10,21 @@ class BLogPost extends Component {
     isLoading: false,
   };
 
+  getPostAPI = () => {
+    axios
+      .get('http://localhost:3004/posts')
+      .then((result) => this.setState({ post: result.data, isLoading: false }));
+  };
+
   componentDidMount() {
     this.setState({
       post: [],
       isLoading: true,
     });
-    axios
-      .get('http://localhost:3004/posts')
-      .then((result) => this.setState({ post: result.data, isLoading: false }));
+    this.getPostAPI();
   }
 
-  hendleRemove = (e) => {
+  animate = (e) => {
     let x = e.clientX - e.target.offsetLeft;
     let y = e.clientY - e.target.offsetTop;
     let ripples = document.createElement('span');
@@ -32,20 +36,28 @@ class BLogPost extends Component {
     }, 1000);
   };
 
+  hendleRemove = (id) => {
+    console.log(id);
+    axios
+      .delete(`http://localhost:3004/posts/${id}`)
+      .then((res) => {
+        console.log(res);
+        alert('Anda Berhasil Menghapus Data!!');
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('Anda Tidak Berhasil Menghapus Data');
+      });
+    this.getPostAPI();
+  };
+
   render() {
     return (
       <div className='container'>
         <p className='container__title'>Blog Post</p>
         {this.state.isLoading ? <Loading /> : ''}
         {this.state.post.map((post) => {
-          return (
-            <Post
-              key={post.id}
-              title={post.title}
-              desc={post.body}
-              remove={this.hendleRemove}
-            />
-          );
+          return <Post key={post.id} data={post} remove={this.hendleRemove} />;
         })}
       </div>
     );
