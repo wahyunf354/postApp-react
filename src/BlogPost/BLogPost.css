@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container__title {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #001233;
+  font-weight: 700;
+  text-align: center;
+}
