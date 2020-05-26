@@ -10,6 +10,9 @@ const Post = (props) => {
       <div className='card__content-post'>
         <p className='card__title-post'>{props.title}</p>
         <p className='card__desc-post'>{props.desc}</p>
+        <button className='card__button__danger' onClick={props.remove}>
+          Remove
+        </button>
       </div>
     </div>
   );

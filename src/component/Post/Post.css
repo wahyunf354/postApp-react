@@ -1,11 +1,12 @@
 .card {
-  max-width: 40%;
+  max-width: 50%;
+  min-width: 50%;
   min-height: 100px;
   padding: 10px;
   display: flex;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
 }
@@ -23,4 +24,72 @@
 
 .card__desc-post {
   font-size: 15px;
+}
+
+.card__button__danger {
+  position: relative;
+  padding: 1px 4px;
+  background: linear-gradient(90deg, #d62828, #f77f00);
+  outline: none;
+  border: solid 0px rgba(0, 0, 0, 0);
+  padding: 10px 15px;
+  border-radius: 40px;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 700;
+  overflow: hidden;
+  letter-spacing: 2px;
+}
+
+span {
+  position: absolute;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: animate 1s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.5;
+  }
+
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: 90%;
+    min-height: 100px;
+    padding: 10px;
+    display: flex;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card {
+    max-width: 90%;
+    min-height: 100px;
+    padding: 10px;
+    display: flex;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 }
