@@ -1,0 +1,60 @@
+.form-add {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-add__title {
+  background: -webkit-linear-gradient(45deg, #d62828, #f77f00);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.form-add__label {
+  margin: 10px 0;
+  font-weight: 700;
+  color: #f77f00;
+}
+
+.form-add__input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #f77f00;
+  border-radius: 8px;
+  color: #f77f00;
+}
+
+.form-add__input::-moz-placeholder {
+  color: #f77f00;
+}
+
+.form-add__input::-webkit-input-placeholder {
+  color: #f77f00;
+}
+
+.form-add__button {
+  width: 40%;
+  background: -webkit-linear-gradient(45deg, #d62828, #f77f00);
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: 10px 0;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 40px;
+  font-weight: 700;
+  cursor: pointer;
+  translate: 1s;
+}
+
+.form-add__button:hover {
+  background: -webkit-linear-gradient(180deg, #d62828, #f77f00);
+}

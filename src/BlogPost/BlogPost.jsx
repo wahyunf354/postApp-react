@@ -3,7 +3,8 @@ import './BLogPost.css';
 import Post from '../../src/component/Post/Post';
 import axios from 'axios';
 import Loading from '../component/atom/Loading/Loading';
-
+import IconButton from '../component/atom/IconButton/IconButton';
+import { Link } from 'react-router-dom';
 class BLogPost extends Component {
   state = {
     post: [],
@@ -12,7 +13,7 @@ class BLogPost extends Component {
 
   getPostAPI = () => {
     axios
-      .get('http://localhost:3004/posts')
+      .get('http://localhost:3004/posts?_sort=id&_order=desc')
       .then((result) => this.setState({ post: result.data, isLoading: false }));
   };
 
@@ -40,12 +41,10 @@ class BLogPost extends Component {
     console.log(id);
     axios
       .delete(`http://localhost:3004/posts/${id}`)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         alert('Anda Berhasil Menghapus Data!!');
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         alert('Anda Tidak Berhasil Menghapus Data');
       });
     this.getPostAPI();
@@ -59,6 +58,9 @@ class BLogPost extends Component {
         {this.state.post.map((post) => {
           return <Post key={post.id} data={post} remove={this.hendleRemove} />;
         })}
+        <Link to='/add'>
+          <IconButton type="add" classCss="add-post__button"/>
+        </Link>
       </div>
     );
   }
