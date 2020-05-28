@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import BLogPost from './BlogPost/BlogPost';
 import FormAddPost from './FormAddPost/FormAddPost';
+import FormUpdate from './FormUpdate/FormUpdate';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/add'>
           <FormAddPost />
         </Route>
+        <Route path="/update/:id" component={FormUpdate} />
       </Switch>
     </Router>
   );

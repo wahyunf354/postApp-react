@@ -38,7 +38,6 @@ class BLogPost extends Component {
   };
 
   hendleRemove = (id) => {
-    console.log(id);
     axios
       .delete(`http://localhost:3004/posts/${id}`)
       .then(() => {
