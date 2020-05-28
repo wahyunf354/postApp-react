@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import IconButton from '../../src/component/atom/IconButton/IconButton';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Button from '../component/atom/Button/Button';
 import Axios from 'axios';
 
-const FormUpdate = (props) => {
 
+const FormUpdate = (props) => {
+  
+  const history = useHistory();
   const [state, setState] = useState({
     title: '',
     body: '',
@@ -24,12 +26,20 @@ const FormUpdate = (props) => {
       }));
   },[]);
 
-  const heandleChange = () => {
-    console.log("ok form");
+  const heandleChange = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value
+    });
   };
 
   const hendleSubmit = () => {
-    console.log(state);
+    Axios.patch(`http://localhost:3004/posts/${state.id}`, state)
+      .then(() => {
+        alert('Data Post Berhasil DiUbah');
+        history.push('/');
+      })
+      .catch(() => alert('Maaf Data TidakBerhasil Di Ubah'));
   };
 
   return (
